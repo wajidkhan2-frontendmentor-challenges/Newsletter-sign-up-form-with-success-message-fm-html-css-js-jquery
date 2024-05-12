@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+	<main class="main-container centerxy">
+		<div class="Newsletter-Sign-up-component" id="mainComponent">
+			<div class="flex-box Newsletter-Signup-section" id="signUpSection">
+				<div class="flex-box text-form-section ">
+					<div class="text-section">
+						<h1 class="reset_me text-h1">Stay updated!</h1>
+						<p class="reset_me text-p">Join 60,000+ product managers receiving monthly updates on:</p>
+	
+						<ul class="text-ul">
+							<li class="flex-box text-li">
+								<img class="text-li-icon" src="./assets/images/icon-list.svg" alt="">
+								<p class="reset_me text-li-p">Product discovery and building what matters</p>
+							</li>
+							<li class="flex-box text-li">
+								<img class="text-li-icon" src="./assets/images/icon-list.svg" alt="">
+								<p class="reset_me text-li-p">Measuring to ensure updates are a success</p>
+							</li>
+							<li class="flex-box text-li">
+								<img class="text-li-icon" src="./assets/images/icon-list.svg" alt="">
+								<p class="reset_me text-li-p">And much more!</p>
+							</li>
+						</ul>
+					</div>
+					<div class="form-section">
+						<form action="#" id="form">
+							<div class="form-label-error flex-box">
+								<label  class="form-label" for="signup-email">Email address</label>
+								<p id="errorMsg" class="reset_me">Valid email required</p>
+							</div>
+							<input   class="form-input" type="email" id="signup-email" placeholder="email@company.com">
+							<button class="form-btn" type="">Subscribe to monthly newsletter</button>
+						</form>
+					</div>
+				</div>
+				<div class="picture-section">
+					<img class="desktop" src="./assets/images/illustration-sign-up-desktop.svg" alt="">
+					<img class="mobile"  src="./assets/images/illustration-sign-up-mobile.svg"  alt="">
+				</div>
+			</div>
+
+			<div class="Newsletter-success-section" id="successSection">
+				<img src="./assets/images/icon-success.svg" alt="">
+				<h2 class="reset_me text-h2">Thanks for subscribing!</h2>
+				<p class="reset_me">
+					A confirmation email has been sent to <strong>ash@loremcompany.com</strong>. 
+					Please open it and click the button inside to confirm your subscription.
+				</p>
+				<button id="dismissBtn" class="form-btn">Dismiss message</button>
+			</div>
+		</div>
+	</main>
+
+	<script src="./jquery-3.7.1.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			$('#signUpSection').show();
+			$('#successSection').hide();
+			$('#errorMsg').hide();
+
+			$('#form').submit(function(e) {
+				e.preventDefault()
+				if (Valid_Email($("#signup-email")[0]) == true) {
+					$('#signUpSection').hide();
+					$('#successSection').show();
+
+					$('#dismissBtn').on("click", function() {
+						$("#mainComponent").hide();
+						$("#signup-email").off("input")
+						$("#dismissBtn").off("click")
+					});
+
+				} else {
+					$('#errorMsg').show();
+					$("#signup-email").on("input", function() {
+						if (Valid_Email($("#signup-email")[0]) == true)
+						{
+							$('#errorMsg').hide();
+						}
+					} );
+
+				}
+			});
+
+			function Valid_Email(input) {
+				var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+				if (input.value.match(validRegex)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		});
+
+		
+	</script>
+  <!-- Sign-up form start -->
+
+  <!-- Stay updated!
+
+  Join 60,000+ product managers receiving monthly updates on:
+
+  Product discovery and building what matters
+  Measuring to ensure updates are a success
+  And much more!
+
+  Email address
+  email@company.com
+
+  Subscribe to monthly newsletter -->
+
+  <!-- Sign-up form end -->
+
+  <!-- Success message start -->
+
+  <!-- Thanks for subscribing!
+
+  A confirmation email has been sent to ash@loremcompany.com. 
+  Please open it and click the button inside to confirm your subscription.
+
+  Dismiss message -->
+
+  <!-- Success message end -->
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
