@@ -9,7 +9,7 @@ desktop view\
 ![](./Screenshots/desktop.png)
 
 ### Demo
-[FireShot](https://getfireshot.com/)
+[click me.](https://wajidkhan2-frontendmentor-challenges.github.io/Newsletter-sign-up-form-with-success-message-fm-html-css-js-jquery/)
 
 ### Built with
 - Mobile-first workflow
